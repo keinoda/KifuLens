@@ -1,0 +1,4 @@
+module KifuLensEngine {
+    umbrella header "kifulens_engine.h"
+    export *
+}

@@ -1,0 +1,34 @@
+{
+  "defaultEngine": "nagisa-v3",
+  "policyEngine": "nagisa-v3",
+  "engines": [
+    {
+      "id": "nagisa-v3",
+      "displayName": "NAGISA v3",
+      "version": "v3.1",
+      "commentName": "NAGISA",
+      "source": "Vendor/NagisaV3Engine/Upstream",
+      "patch": "Vendor/EngineBridge/Build/patches/nagisa-v3.1.patch",
+      "architecture": "SFNN_halfkahm2_1024_15_64_ls9",
+      "nnue": "KifuLens/EngineAssets/nagisa-v3/eval/nn.bin",
+      "progress": "KifuLens/EngineAssets/nagisa-v3/eval/progress.bin",
+      "options": {
+        "FV_SCALE": 28,
+        "LS_PROGRESS_COEFF": "@progress",
+        "LS_BUCKET_MODE": "progress8kpabs"
+      }
+    },
+    {
+      "id": "yaneuraou-980",
+      "displayName": "YaneuraOu 9.80",
+      "version": "9.80",
+      "source": "Vendor/YaneuraOu980",
+      "patch": "Vendor/EngineBridge/Build/patches/yaneuraou-9.80.patch",
+      "architecture": "SFNN_halfka2_1024_7_64_k3k3",
+      "nnue": "KifuLens/EngineAssets/YaneuraOu980/eval/nn.bin",
+      "options": {
+        "FV_SCALE": 40
+      }
+    }
+  ]
+}

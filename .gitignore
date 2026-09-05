@@ -1,0 +1,28 @@
+.DS_Store
+.build/
+.swiftpm/
+__pycache__/
+/.build-engines/
+/engines.local.json
+/KifuLens/Generated/*
+!/KifuLens/Generated/CompiledEngineConfiguration.swift
+/build/
+/KifuLens.xcodeproj/
+/KifuLens/Info.plist
+xcuserdata/
+*.xcuserstate
+
+# 標準のNAGISA v3.1の評価資産は同梱し、個別に追加する評価関数は追跡しない。
+/KifuLens/EngineAssets/*
+!/KifuLens/EngineAssets/nagisa-v3/
+/KifuLens/EngineAssets/nagisa-v3/eval/*
+!/KifuLens/EngineAssets/nagisa-v3/eval/nn.bin
+!/KifuLens/EngineAssets/nagisa-v3/eval/progress.bin
+# モデル・購入駒画像・定跡・前例DBは利用者が別途配置する。
+/KifuLens/PolicyAssets/
+/KifuLens/VisualAssets/
+/KifuLens/Resources/
+
+# 標準構成のiOS用静的ライブラリを同梱する。
+/Vendor/EngineBridge/Frameworks/*
+!/Vendor/EngineBridge/Frameworks/KifuLensNative.xcframework/

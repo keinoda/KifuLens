@@ -1,0 +1,117 @@
+name: KifuLens
+include:
+  - engine-resources.yml
+options:
+  bundleIdPrefix: com.keinoda
+  deploymentTarget:
+    iOS: "17.0"
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
+
+packages:
+  SwiftShogi:
+    path: Vendor/SwiftShogi
+  KifuLensEngine:
+    path: Vendor/EngineBridge
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CODE_SIGNING_ALLOWED: YES
+    CODE_SIGN_STYLE: Automatic
+    KIFULENS_BUNDLE_IDENTIFIER: com.keinoda.KifuLens
+
+targets:
+  KifuLens:
+    type: application
+    platform: iOS
+    sources:
+      - path: KifuLens
+        excludes:
+          - EngineAssets
+          - Resources/FloodgateReference
+      - path: Vendor/ShogiHome/public/board/wood_warm.png
+        buildPhase: resources
+      - path: KifuLens/Resources/FloodgateReference/floodgate-4000-since-2023.osref.lzfse
+        buildPhase: resources
+      - path: KifuLens/Resources/FloodgateReference/floodgate-4000-since-2023-delta-20260617-20260625.osref.lzfse
+        buildPhase: resources
+      - path: KifuLens/Resources/FloodgateReference/floodgate-4000-since-2023-delta-20260626-20260813.osref.lzfse
+        buildPhase: resources
+      - path: KifuLens/Resources/FloodgateReference/floodgate-4000-since-2023-delta-20260814-20260905.osref.lzfse
+        buildPhase: resources
+      - path: docs/TermsOfUse.md
+        buildPhase: resources
+      - path: docs/PrivacyPolicy.md
+        buildPhase: resources
+      - path: docs/OpenSourceLicenses.md
+        buildPhase: resources
+      - path: LICENSE
+        buildPhase: resources
+    info:
+      path: KifuLens/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDisplayName: 棋譜レンズ
+        KifuLensPrecedentCatalogURL: "https://drive.usercontent.google.com/download?id=1RP4G8sRo_5vWaiM-8TSPKWypaqoLcDsg&export=download&confirm=t"
+        ITSAppUsesNonExemptEncryption: false
+        LSSupportsOpeningDocumentsInPlace: true
+        LSApplicationCategoryType: public.app-category.board-games
+        UIApplicationSupportsIndirectInputEvents: true
+        UILaunchScreen: {}
+        UIRequiresFullScreen: true
+        UIFileSharingEnabled: true
+        UIRequiredDeviceCapabilities:
+          - arm64
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    dependencies:
+      - package: SwiftShogi
+      - package: KifuLensEngine
+    settings:
+      base:
+        CURRENT_PROJECT_VERSION: "12"
+        MARKETING_VERSION: "1.1.2"
+        PRODUCT_BUNDLE_IDENTIFIER: $(KIFULENS_BUNDLE_IDENTIFIER)
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: NO
+
+  KifuLensTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: KifuLensTests
+    dependencies:
+      - target: KifuLens
+      - package: SwiftShogi
+      - package: KifuLensEngine
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(KIFULENS_BUNDLE_IDENTIFIER).Tests
+        GENERATE_INFOPLIST_FILE: YES
+
+  KifuLensUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: KifuLensUITests
+    dependencies:
+      - target: KifuLens
+    settings:
+      base:
+        CODE_SIGNING_ALLOWED: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(KIFULENS_BUNDLE_IDENTIFIER).UITests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  KifuLens:
+    build:
+      targets:
+        KifuLens: all
+        KifuLensTests: [test]
+        KifuLensUITests: [test]
+    test:
+      targets:
+        - KifuLensTests
+        - KifuLensUITests

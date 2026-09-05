@@ -1,0 +1,13 @@
+{
+  "targets": {
+    "KifuLens": {
+      "sources": [
+        {
+          "path": "KifuLens/EngineAssets/nagisa-v3",
+          "type": "folder",
+          "buildPhase": "resources"
+        }
+      ]
+    }
+  }
+}

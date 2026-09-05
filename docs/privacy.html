@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KifuLens、前例DBの更新ツール、公式サイトにおける情報の取扱い。">
+  <title>プライバシーポリシー — KifuLens</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="./">KifuLens</a>
+      <nav aria-label="サイト内"><a href="./">ホーム</a></nav>
+    </header>
+    <main>
+      <h1>プライバシーポリシー</h1>
+      <p class="meta">制定日: 2026年7月28日 / 改定日: 2026年9月5日</p>
+      <p>本ポリシーは、keinoda（以下「運営者」）が提供するiPhoneアプリ「KifuLens」、運営者用の前例更新ツール「KifuLens Precedent Updater」、および本サイトにおける情報の取扱いを説明します。</p>
+
+      <h2>1. KifuLensアプリで扱うデータ</h2>
+      <p>棋譜、定跡、前例DB、解析結果および設定は、利用者の端末内で読み込み・処理・保存します。解析は端末内で実行し、棋譜や局面を解析用サーバーへ送信しません。</p>
+      <p>アプリには、運営者独自のアカウント登録、広告、利用状況解析SDK、追跡機能はありません。アプリ独自の機能を通じて、運営者が利用者の個人情報、棋譜、解析結果、利用履歴を収集することはありません。</p>
+      <p>クリップボードは、利用者が貼り付け操作を行った場合に限って読み取ります。バックグラウンドで監視しません。</p>
+
+      <h2>2. アプリからの通信</h2>
+      <p>Web CSAを読み込む操作を行うと、指定されたHTTPS URLへ棋譜取得のために接続します。リアルタイム取得や自動再読み込みは行いません。</p>
+      <p>「前例DBのダウンロード」を開くと、Google Driveから更新情報を取得します。ダウンロード操作時には、必要なDBファイルを取得します。この通信にGoogleアカウントへのログインは不要で、棋譜・局面・解析結果を送信しません。取得済みのDBは端末内で検索でき、通常の前例検索時やアプリ起動時には更新確認の通信を行いません。</p>
+      <p>通信先には、IPアドレス、取得URL、User-Agentなど通信に必要な情報が送信されます。通信先の運営者がアクセスログを保存する場合があり、その取扱いには各サービスの方針が適用されます。</p>
+
+      <h2 id="precedent-updater">3. 運営者用のGoogle Drive認証</h2>
+      <p><strong>KifuLens Precedent Updater</strong>は、運営者自身のGoogleアカウントを認証して使用する前例DB更新ツールです。一般のアプリ利用者に、この認証やDriveへのアクセス許可を求めることはありません。</p>
+      <ul>
+        <li><strong>目的:</strong> 公開されたFloodgate棋譜から生成した前例DBと更新情報を、KifuLensの配布用Google Driveフォルダへ保存・更新すること。</li>
+        <li><strong>アクセスする情報:</strong> 配布フォルダ内のDB・更新情報の内容と、ファイル名、ID、サイズ、更新日時などのメタデータ。</li>
+        <li><strong>要求する権限:</strong> Google Drive内のファイルの参照・編集・作成・削除を許可するスコープを使用します。別の方法で作成済みの配布ファイルを更新するために必要です。OAuthの権限自体はDrive全体に及びますが、更新プログラムの操作先は専用の配布フォルダに固定し、他のフォルダのファイルを収集・変更しません。</li>
+        <li><strong>保存:</strong> 再認証用トークンとクライアント情報は、運営者が管理する更新端末のアクセス権を制限した設定ファイルに保存します。公開リポジトリ、配布DB、アプリ本体には含めません。</li>
+        <li><strong>共有:</strong> 公開するのは、公開棋譜から作成した前例DBと、その版・期間・対局数・ダウンロード先などの配布情報です。Googleアカウントの認証情報や、配布対象でないDriveのファイルは公開しません。</li>
+      </ul>
+      <p>Google API経由で得たデータは上記の配布・検証目的に限って利用し、販売、広告配信、汎用AIの学習には利用しません。Google APIから受け取った情報の利用と他のアプリへの転送は、制限付き使用の要件を含む<a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>に従います。</p>
+
+      <h2>4. 保存期間・削除・認証の取り消し</h2>
+      <p>アプリで保存した棋譜は「ファイル」Appから削除できます。アプリ内部の設定や展開済みDBは、アプリを削除すると消去されます。展開済みの既定定跡・前例DBは、iCloudおよび端末バックアップの対象から除外します。</p>
+      <p>更新ツールの認証情報は自動配布を継続する間保持し、運用終了時に削除します。運営者はGoogleアカウントの接続管理からアクセス許可を取り消せます。許可を取り消すと、更新ツールからDriveへの新たな更新はできなくなります。既に公開した前例DBや利用者が取得済みのコピーは、認証を取り消しても自動削除されません。</p>
+
+      <h2>5. お問い合わせとTestFlight</h2>
+      <p>GitHub Issuesへ投稿した内容は公開されるため、個人情報や非公開の棋譜を含めないでください。</p>
+      <p>TestFlightによる配布中は、テスターが送信したコメント、スクリーンショット、クラッシュ情報、端末・OS情報などがAppleを通じて運営者に提供される場合があります。これらは不具合調査と改善に使用します。</p>
+
+      <h2>6. 本サイトと第三者のサービス</h2>
+      <p>本サイトはGitHub Pagesで公開しています。本サイト独自のアクセス解析や追跡用Cookieは使用しません。サイトの配信に際してGitHubが扱うアクセス情報には、<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubのプライバシー声明</a>が適用されます。</p>
+      <p>Google DriveとGoogle認証における情報の取扱いには、<a href="https://policies.google.com/privacy">Googleのプライバシーポリシー</a>が適用されます。TestFlight、App Store、iCloud Drive、ファイルプロバイダ、Web CSAの取得先などにも、それぞれのサービスの方針が適用されます。</p>
+
+      <h2>7. ポリシーの変更</h2>
+      <p>本ポリシーを変更する場合は、このページを更新して改定日を表示します。Google認証でアクセスする情報や利用目的を変更する場合は、必要な説明と同意を行ってから利用します。</p>
+      <p>運営者: keinoda</p>
+    </main>
+    <footer><p><a href="./">KifuLens ホーム</a> · <a href="https://github.com/keinoda/KifuLens">GitHubリポジトリ</a></p></footer>
+  </div>
+</body>
+</html>

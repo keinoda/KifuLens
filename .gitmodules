@@ -1,0 +1,10 @@
+[submodule "Vendor/NagisaV3Engine/Upstream"]
+	path = Vendor/NagisaV3Engine/Upstream
+	url = https://github.com/keinoda/YaneuraOu.git
+	branch = nagisa_v3
+[submodule "Vendor/SwiftShogi"]
+	path = Vendor/SwiftShogi
+	url = https://github.com/keinoda/SwiftShogi.git
+[submodule "Vendor/ShogiHome"]
+	path = Vendor/ShogiHome
+	url = https://github.com/sunfish-shogi/shogihome.git

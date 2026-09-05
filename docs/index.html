@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KifuLensは、自作の将棋AI NAGISAをiPhoneで動かし、棋譜・解析結果・定跡・Floodgateの前例を閲覧するアプリです。">
+  <title>KifuLens — iPhoneで将棋解析</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="./">KifuLens</a>
+      <nav aria-label="サイト内"><a href="privacy.html">プライバシーポリシー</a></nav>
+    </header>
+    <main>
+      <h1>iPhoneで、NAGISAを。</h1>
+      <p class="lead">KifuLensは、自作の将棋AI「NAGISA」をスマートフォンで動かし、棋譜・解析結果・定跡・前例を閲覧するためのアプリです。</p>
+      <p>NAGISA v3 / v4による解析は端末内で行います。解析のために棋譜や局面をサーバーへ送信することはありません。</p>
+      <div class="note">
+        <p>ソースコードの公開を準備しています。現在の<a href="https://github.com/keinoda/KifuLens">GitHubリポジトリ</a>には、この案内ページとプライバシーポリシーだけを掲載しています。</p>
+      </div>
+      <h2>主な機能</h2>
+      <ul>
+        <li>棋譜ファイル、テキストの貼り付け、HTTPSのCSA URLからの読み込み</li>
+        <li>端末内での局面解析と、評価値・読み筋の表示</li>
+        <li>大きな定跡ファイルの閲覧と、Floodgateの前例検索</li>
+        <li>前例DBだけのダウンロード・更新。取得後はオフラインで利用可能</li>
+      </ul>
+      <h2 id="precedent-updater">前例DBの更新について</h2>
+      <p><strong>KifuLens Precedent Updater</strong>は、運営者が前例DBを作成し、Google Driveへ配布するための専用ツールです。公開されたFloodgateの棋譜から前例DBを作り、DBファイルと更新情報を配布フォルダへ保存します。</p>
+      <p>Googleアカウントでの認証は、運営者の更新ツールだけが使用します。KifuLensの利用者が前例DBをダウンロードする際に、GoogleへのログインやDriveへのアクセス許可は必要ありません。</p>
+      <p>更新ツールが扱う情報と権限の範囲は、<a href="privacy.html#precedent-updater">プライバシーポリシー</a>をご覧ください。</p>
+    </main>
+    <footer>
+      <p>開発・運営: keinoda</p>
+    </footer>
+  </div>
+</body>
+</html>

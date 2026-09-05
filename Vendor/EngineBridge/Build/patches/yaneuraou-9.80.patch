@@ -1,0 +1,70 @@
+--- a/source/eval/deep/nn_types.h
++++ b/source/eval/deep/nn_types.h
+@@ -2,7 +2,7 @@
+ #define __DLSHOGI_EVALUATE_H_INCLUDED__
+ 
+ #include "../../config.h"
+-#if defined(YANEURAOU_ENGINE_DEEP)
++#if defined(YANEURAOU_ENGINE_DEEP) || defined(NAGISA_POLICY_VALUE_COREML)
+ 
+ #include "../../position.h"
+ 
+--- a/source/eval/deep/nn_types.cpp
++++ b/source/eval/deep/nn_types.cpp
+@@ -1,6 +1,6 @@
+ ﻿#include "nn_types.h"
+ 
+-#if defined(EVAL_DEEP)
++#if defined(EVAL_DEEP) || defined(NAGISA_POLICY_VALUE_COREML)
+ 
+ #include <cstring> // memset,wchar_t
+ #include <cmath>   // expf,logf
+--- a/source/position.h
++++ b/source/position.h
+@@ -346,7 +346,7 @@
+ 	Position& set(const std::string& fenStr,bool isChess960, StateInfo* si);
+     Position& set(const std::string& code, Color c, StateInfo* si);
+ #else
+-    std::optional<PositionSetError> set(const std::string& sfenStr, StateInfo* si);
++    std::optional<PositionSetError> set(const std::string& sfenStr, StateInfo* si, bool skip_initial_evaluation = false);
+ 
+ 	// 平手の初期盤面を設定する。
+     // siについては、上記のset()にある説明を読むこと。
+--- a/source/position.cpp
++++ b/source/position.cpp
+@@ -415,7 +415,7 @@
+ // FENの正当性はGUI側の責任であると想定されています。
+ 
+ // sfen文字列で盤面を設定する
+-std::optional<PositionSetError> Position::set(const std::string& sfen, StateInfo* si) {
++std::optional<PositionSetError> Position::set(const std::string& sfen, StateInfo* si, bool skip_initial_evaluation) {
+ #if STOCKFISH
+ 
+ 	std::memset(this, 0, sizeof(Position));
+@@ -732,7 +732,8 @@
+ #endif
+ 
+ #if defined(USE_CLASSIC_EVAL)
+-    Eval::compute_eval(*this);
++    if (!skip_initial_evaluation)
++        Eval::compute_eval(*this);
+ #endif
+ 
+     // --- validation
+--- a/source/usioption.cpp
++++ b/source/usioption.cpp
+@@ -69,12 +69,12 @@
+ 	{
+ 		// 未追加なので追加してやる。
+ 
+-		static size_t insert_order = 0;
++		const size_t insert_order = options_map.size();
+ 
+ 		options_map[name] = option;
+ 
+ 		options_map[name].parent = this;
+-		options_map[name].idx = insert_order++;
++		options_map[name].idx = insert_order;
+ 	}
+ 	else
+ 	{
