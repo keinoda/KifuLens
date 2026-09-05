@@ -3,7 +3,6 @@
 将棋の盤面、棋譜、端末内解析、定跡、Floodgate前例を閲覧するiPhoneアプリです。
 既定の解析エンジンは、公開済みNAGISA v3.1です。
 YaneuraOu系の別エンジンも、ソースと評価資産を用意して`engines.json`へ追加できます。
-ShogiHub、OpeningStudio、前例DBの生成・日次更新サーバーは含みません。
 
 - [公式ページ](https://keinoda.github.io/KifuLens/)
 - [プライバシーポリシー](https://keinoda.github.io/KifuLens/privacy.html)
@@ -112,8 +111,7 @@ xcodebuild -project KifuLens.xcodeproj -scheme KifuLens \
 ```
 
 XcodeからRunする場合は、同じ設定をBuild Settingsの`DEVELOPMENT_TEAM`と
-`KIFULENS_BUNDLE_IDENTIFIER`へ指定してください。生成プロジェクト、署名用設定、
-一時ビルド成果物はGitに含めません。作業が終わった一時DerivedDataは削除できます。
+`KIFULENS_BUNDLE_IDENTIFIER`へ指定してください。
 
 ## テスト
 
